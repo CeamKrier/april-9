@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import Icon from './icon.svg';
 import { useProvider } from "../../helpers/contextHelper";
 
 import "./style.css";
@@ -26,8 +26,8 @@ const Navbar = () => {
     return (
         <div className='navbar-wrapper'>
             <div className='navbar-leftContent'>
+                <img src={Icon}/>
                 <h3>{state.currentPage.length > 0 ? state.currentPage : "April-9"}</h3>
-                <img src='' />
             </div>
 
             <div className='navbar-rightContent'>

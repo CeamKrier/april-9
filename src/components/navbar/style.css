@@ -3,6 +3,16 @@
     justify-content: space-between;
 }
 
+.navbar-leftContent {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-leftContent img {
+    height: 2.5em;
+    margin-bottom: 0.5em;
+}
+
 .navbar-rightContent {
     display: flex;
     width: 20vw;
