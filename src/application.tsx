@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./pages/home";
 import ContactPage from "./pages/contact";
@@ -12,21 +12,9 @@ const Application: React.FC<{}> = () => {
         <>
             <Router>
                 <Navbar />
-                <ul>
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/contact'>Contact</Link>
-                    </li>
-                </ul>
                 <Switch>
-                    <Route exact path='/'>
-                        <HomePage />
-                    </Route>
-                    <Route path='/contact'>
-                        <ContactPage />
-                    </Route>
+                    <Route exact path='/' component={HomePage} />
+                    <Route path='/contact' component={ContactPage} />
                 </Switch>
             </Router>
             <Footer />

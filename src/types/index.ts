@@ -1,6 +1,11 @@
 import { ReactElement } from "react";
 
-export interface StateKeys {}
+type LanguageTypes = "en" | "tr";
+
+export interface StateKeys {
+    currentPage: string;
+    language: LanguageTypes;
+}
 
 export interface ContextProps {
     state: StateKeys;
@@ -11,7 +16,7 @@ export interface ProviderProps {
     children: ReactElement;
 }
 
-export type ReducerAction = "SET_ROTATION_DEGREE" | "";
+export type ReducerAction = "SET_CURRENT_PAGE" | "SET_LOCALIZATION_PREFERENCE";
 
 export interface DispatchParameters {
     type: ReducerAction;

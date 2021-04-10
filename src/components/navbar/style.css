@@ -1,0 +1,45 @@
+.navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-rightContent {
+    display: flex;
+    width: 20vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-linkList {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 10vw;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-linkList a {
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+    color: black;
+}
+
+.navbar-preferencesSection {
+    display: flex;
+    width: 6vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-preferencesSection select {
+    height: 1.5em;
+}
+
+.navbar-avatar {
+    width: 3em;
+    height: 3em;
+    border-radius: 5em;
+    background: gray;
+}
