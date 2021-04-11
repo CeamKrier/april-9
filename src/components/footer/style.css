@@ -1,10 +1,19 @@
-.footerWrapper {
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
-.footerWrapper h4 {
-    text-align: center;
+.footer-content {
+    display: flex;
+    width: 1170px;
+    justify-content: center;
+}
+
+.footer-wrapper span {
+    font-size: 17px;
+    font-weight: 700;
 }

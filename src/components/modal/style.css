@@ -43,3 +43,9 @@
 .modal-footer button {
     margin-right: 1em;
 }
+
+@media screen and (max-width: 1250px) {
+    .modal-content {
+        width: 90%;
+    }
+}

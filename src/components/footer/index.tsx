@@ -7,8 +7,10 @@ const Footer: React.FC<{}> = () => {
     const { t } = useTranslation();
 
     return (
-        <div className='footerWrapper'>
-            <h4>{`${t("components.footer.text")} - 2021`}</h4>
+        <div className='footer-wrapper'>
+            <div className='footer-content'>
+                <span>{`${t("components.footer.text")} - 2021`}</span>
+            </div>
         </div>
     );
 };

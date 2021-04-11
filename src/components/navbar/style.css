@@ -1,6 +1,8 @@
-.navbar-wrapper {
+.navbar-content {
     display: flex;
     justify-content: space-between;
+    width: 1170px;
+    margin: 0 auto;
 }
 
 .navbar-leftContent {
@@ -8,42 +10,59 @@
     align-items: center;
 }
 
+.navbar-brand {
+    display: flex;
+    width: 110px;
+}
+
 .navbar-leftContent img {
     height: 2.5em;
     margin-bottom: 0.5em;
+    margin-right: 0.5em;
 }
 
 .navbar-rightContent {
     display: flex;
-    width: 20vw;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar-linkList {
+ul {
     list-style: none;
-    display: flex;
-    justify-content: space-between;
-    width: 10vw;
     margin: 0;
     padding: 0;
 }
 
-.navbar-linkList a {
+li a {
     text-decoration: none;
     font-size: 17px;
     font-weight: 600;
     color: black;
 }
 
-.navbar-preferencesSection {
+.navbar-links ul {
     display: flex;
-    width: 6vw;
+    justify-content: space-between;
+    width: 170px;
+    margin-left: 3em;
+}
+
+.navbar-preferences {
+    display: flex;
+    width: 140px;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar-preferencesSection select {
+.navbar-popup-preferences {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.navbar-preferences select {
     height: 1.5em;
 }
 
@@ -52,4 +71,49 @@
     height: 3em;
     border-radius: 5em;
     background: gray;
+}
+
+.navbar-mobileMenu {
+    display: none;
+}
+
+.navbar-mobileMenu-popup {
+    display: none;
+    height: 130px;
+    width: 140px;
+    position: absolute;
+    top: 65px;
+    right: 8px;
+    background: gainsboro;
+    border-radius: 5px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: all .3s;
+}
+
+.navbar-mobileMenu-popup ul {
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1250px) {
+    .navbar-content {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 970px) {
+    .navbar-links,
+    .navbar-preferences {
+        display: none;
+    }
+
+    .navbar-mobileMenu {
+        display: initial;
+    }
 }

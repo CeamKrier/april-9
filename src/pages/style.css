@@ -1,0 +1,16 @@
+.page-wrapper {
+    height: 100vh;
+    background-color: cadetblue;
+}
+
+.page-content {
+    display: flex;
+    margin: 0 auto;
+    width: 1170px;
+}
+
+@media screen and (max-width: 1250px) {
+    .page-content {
+        width: 90%;
+    }
+}
