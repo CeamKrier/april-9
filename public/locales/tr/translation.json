@@ -1,0 +1,21 @@
+{
+    "pages": {
+        "home": {
+            "description": "Anasayfa açıklama yazısı"
+        },
+        "contact": {
+            "title": "İletişim"
+        }
+    },
+    "components": {
+        "footer": {
+            "text": "Tüm Hakları Saklıdır"
+        },
+        "navbar": {
+            "links": {
+                "home": "Anasayfa",
+                "contact": "İletişim"
+            }
+        }
+    }
+}

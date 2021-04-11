@@ -1,10 +1,6 @@
 import { ReactElement } from "react";
-
-type LanguageTypes = "en" | "tr";
-
 export interface StateKeys {
     currentPage: string;
-    language: LanguageTypes;
 }
 
 export interface ContextProps {

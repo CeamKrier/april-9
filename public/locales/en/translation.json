@@ -1,0 +1,21 @@
+{
+    "pages": {
+        "home": {
+            "description": "Home page description"
+        },
+        "contact": {
+            "title": "Contact"
+        }
+    },
+    "components": {
+        "footer": {
+            "text": "All Rights Reserved"
+        },
+        "navbar": {
+            "links": {
+                "home": "Home",
+                "contact": "Contact"
+            }
+        }
+    }
+}

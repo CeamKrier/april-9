@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Icon from './icon.svg';
+import { useTranslation } from "react-i18next";
+
 import { useProvider } from "../../helpers/contextHelper";
 
+import Icon from "./icon.svg";
 import "./style.css";
 
 const Navbar = () => {
     const { state, dispatch } = useProvider();
     const location = useLocation();
+    const { t, i18n } = useTranslation();
 
     useEffect(() => {
         dispatch({
@@ -17,26 +20,23 @@ const Navbar = () => {
     }, [location.pathname]);
 
     const handleLanguageChange = value => {
-        dispatch({
-            type: "SET_LOCALIZATION_PREFERENCE",
-            payload: value
-        });
+        i18n.changeLanguage(value?.target?.value || "en");
     };
 
     return (
         <div className='navbar-wrapper'>
             <div className='navbar-leftContent'>
-                <img src={Icon}/>
-                <h3>{state.currentPage.length > 0 ? state.currentPage : "April-9"}</h3>
+                <img src={Icon} />
+                <h3>{state.currentPage.length > 0 ? t("pages.contact.title") : "April-9"}</h3>
             </div>
 
             <div className='navbar-rightContent'>
                 <ul className='navbar-linkList'>
                     <li>
-                        <Link to='/'>Home</Link>
+                        <Link to='/'>{t("components.navbar.links.home")}</Link>
                     </li>
                     <li>
-                        <Link to='/contact'>Contact</Link>
+                        <Link to='/contact'>{t("components.navbar.links.contact")}</Link>
                     </li>
                 </ul>
 

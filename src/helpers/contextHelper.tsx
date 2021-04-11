@@ -3,8 +3,7 @@ import React, { useReducer, useContext } from "react";
 import { ContextProps, ProviderProps, StateKeys } from "../types";
 
 const initialState: StateKeys = {
-    currentPage: "",
-    language: "en"
+    currentPage: ""
 };
 
 export const Context = React.createContext<ContextProps>({
@@ -12,13 +11,10 @@ export const Context = React.createContext<ContextProps>({
     dispatch: () => {}
 });
 
-const Reducer = (state, action) => {
+const reducer = (state, action) => {
     switch (action.type) {
         case "SET_CURRENT_PAGE":
             state.currentPage = action.payload;
-            return Object.assign({}, state);
-        case "SET_LOCALIZATION_PREFERENCE":
-            state.language = action.payload;
             return Object.assign({}, state);
         default:
             break;
@@ -26,7 +22,7 @@ const Reducer = (state, action) => {
 };
 
 export const Provider: React.FC<ProviderProps> = ({ children }) => {
-    const [state, dispatch] = useReducer(Reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
 };
