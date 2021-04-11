@@ -23,6 +23,13 @@ const Navbar = () => {
         i18n.changeLanguage(value?.target?.value || "en");
     };
 
+    const handleLoginClick = () => {
+        dispatch({
+            type: "SET_MODAL_VISIBILITY",
+            payload: true
+        });
+    };
+
     return (
         <div className='navbar-wrapper'>
             <div className='navbar-leftContent'>
@@ -46,7 +53,7 @@ const Navbar = () => {
                         <option value='tr'>TR</option>
                     </select>
 
-                    <div className='navbar-avatar'></div>
+                    {state.isLoggedIn ? <div className='navbar-avatar'></div> : <button onClick={handleLoginClick}>Login</button>}
                 </div>
             </div>
         </div>

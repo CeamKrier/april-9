@@ -16,6 +16,10 @@
                 "home": "Home",
                 "contact": "Contact"
             }
+        },
+        "modal": {
+            "title": "Login to your account",
+            "closeButton": "Close"
         }
     }
 }

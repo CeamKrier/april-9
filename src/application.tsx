@@ -5,6 +5,7 @@ import HomePage from "./pages/home";
 import ContactPage from "./pages/contact";
 
 import Navbar from "./components/navbar";
+import Modal from "./components/modal";
 import Footer from "./components/footer";
 
 const Application: React.FC<{}> = () => {
@@ -17,6 +18,7 @@ const Application: React.FC<{}> = () => {
                     <Route path='/contact' component={ContactPage} />
                 </Switch>
             </Router>
+            <Modal />
             <Footer />
         </>
     );

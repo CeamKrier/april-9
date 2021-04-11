@@ -16,6 +16,10 @@
                 "home": "Anasayfa",
                 "contact": "İletişim"
             }
+        },
+        "modal": {
+            "title": "Hesabınıza giriş yapın",
+            "closeButton": "Çıkış"
         }
     }
 }
