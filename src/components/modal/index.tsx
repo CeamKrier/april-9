@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { GrClose } from "react-icons/gr";
 
+import LanguagePicker from "../picker";
+import LoginForm from "../../forms/login";
 import { useProvider } from "../../helpers/contextHelper";
 
 import "./style.css";
@@ -39,12 +42,13 @@ const Modal: React.FC<{}> = () => {
                 <div className='modal-content' onClick={stopClickPropagation}>
                     <div className='modal-header'>
                         <span>{t("components.modal.title")}</span>
+                        <div className='modal-controllers'>
+                            <LanguagePicker />
+                            <GrClose className='modal-closeButton' onClick={handleModalClose} />
+                        </div>
                     </div>
-                    <div className='modal-body'></div>
-                    <div className='modal-footer'>
-                        <button className='modal-closeButton' onClick={handleModalClose}>
-                            {t("components.modal.closeButton")}
-                        </button>
+                    <div className='modal-body'>
+                        <LoginForm />
                     </div>
                 </div>
             </div>

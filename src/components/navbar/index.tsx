@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GrMenu, GrClose } from "react-icons/gr";
+
+import LanguagePicker from "../picker";
 import { useProvider } from "../../helpers/contextHelper";
 
 import Icon from "./icon.svg";
 import "./style.css";
+import { normalizeText, TEXT_LENGTH_LIMIT } from "../../helpers/textHelper";
 
 const Navbar = () => {
-    const [mobileMenuVisibility, setMobileMenuVisibility] = useState(false);
+    const desktopPopupRef = useRef();
+
+    const [mobilePopupVisibility, setMobilePopupVisibility] = useState(false);
+    const [desktopPopupVisibility, setDesktopPopupVisibility] = useState(false);
 
     const { state, dispatch } = useProvider();
 
@@ -22,18 +28,40 @@ const Navbar = () => {
         });
     }, [location.pathname]);
 
-    const handleLanguageChange = useCallback(
-        value => {
-            i18n.changeLanguage(value?.target?.value || "en");
-        },
-        [i18n]
-    );
-    const handleLoginClick = useCallback(() => {
+    useEffect(() => {
+        if (desktopPopupVisibility) {
+            desktopPopupRef.current?.focus();
+        }
+    }, [desktopPopupVisibility, desktopPopupRef.current]);
+
+    useEffect(() => {
+        if (!desktopPopupRef.current) {
+            return;
+        }
+
+        const listener = desktopPopupRef.current.addEventListener("blur", () => {
+            setDesktopPopupVisibility(false);
+        });
+        return () => {
+            desktopPopupRef.current.removeEventListener("blur", listener);
+        };
+    }, [desktopPopupRef.current, setDesktopPopupVisibility]);
+
+    const handleLogin = useCallback(() => {
         dispatch({
             type: "SET_MODAL_VISIBILITY",
             payload: true
         });
     }, [dispatch]);
+
+    const handleLogout = useCallback(() => {
+        dispatch({
+            type: "SET_USER_DATA",
+            payload: null
+        });
+
+        setDesktopPopupVisibility(false);
+    }, [dispatch, setDesktopPopupVisibility]);
 
     const renderLinks = useMemo(() => {
         return (
@@ -48,29 +76,42 @@ const Navbar = () => {
         );
     }, [i18n.language]);
 
-    const renderLanguagePicker = useMemo(() => {
-        return (
-            <select onChange={handleLanguageChange} defaultValue='tr'>
-                <option value='en'>EN</option>
-                <option value='tr'>TR</option>
-            </select>
-        );
-    }, [handleLanguageChange]);
-
     const handleMobileMenuClick = () => {
-        setMobileMenuVisibility(!mobileMenuVisibility);
+        setMobilePopupVisibility(!mobilePopupVisibility);
     };
 
-    const renderAvatar = useMemo(() => {
-        return state.isLoggedIn ? <div className='navbar-avatar'></div> : <button onClick={handleLoginClick}>Login</button>;
-    }, [state.isLoggedIn, handleLoginClick]);
+    const handleUserDetailDisplay = () => {
+        setDesktopPopupVisibility(!desktopPopupVisibility);
+    };
+
+    const renderAuthenticationMenu = useMemo(() => {
+        return state.user ? <div className='navbar-avatar' onClick={handleUserDetailDisplay} /> : <button onClick={handleLogin}>Login</button>;
+    }, [state.user, handleLogin, handleUserDetailDisplay]);
+
+    const renderUserInfo = useMemo(() => {
+        return (
+            state.user && (
+                <div className='navbar-userInfo'>
+                    <span title={state.user.name.length > TEXT_LENGTH_LIMIT ? state.user.name : undefined}>{normalizeText(state.user.name)}</span>
+                    <span title={state.user.email.length > TEXT_LENGTH_LIMIT ? state.user.email : undefined}>{normalizeText(state.user.email)}</span>
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
+            )
+        );
+    }, [state.user, normalizeText, TEXT_LENGTH_LIMIT, handleLogout]);
+
+    const renderMobileAuthenticationMenu = useMemo(() => {
+        return state.user ? renderUserInfo : <button onClick={handleLogin}>Login</button>;
+    }, [renderUserInfo, state.user, handleLogin, handleLogout]);
 
     return (
         <div className='navbar-wrapper'>
             <div className='navbar-content'>
                 <div className='navbar-leftContent'>
                     <div className='navbar-brand'>
-                        <img src={Icon} />
+                        <Link to='/'>
+                            <img src={Icon} />
+                        </Link>
                         <h3>{state.currentPage.length > 0 ? t("pages.contact.title") : "April-9"}</h3>
                     </div>
 
@@ -79,20 +120,24 @@ const Navbar = () => {
 
                 <div className='navbar-rightContent'>
                     <div className='navbar-preferences'>
-                        {renderLanguagePicker}
-                        {renderAvatar}
+                        <LanguagePicker />
+                        {renderAuthenticationMenu}
                     </div>
 
                     <div className='navbar-mobileMenu' onClick={handleMobileMenuClick}>
-                        {mobileMenuVisibility ? <GrClose size='1.4em' /> : <GrMenu size='1.4em' />}
+                        {mobilePopupVisibility ? <GrClose size='1.4em' /> : <GrMenu size='1.4em' />}
                     </div>
 
-                    <div style={mobileMenuVisibility ? { display: 'initial' } : {}} className='navbar-mobileMenu-popup'>
+                    <div style={mobilePopupVisibility ? { display: "initial" } : {}} className='navbar-mobileMenu-popup'>
                         {renderLinks}
                         <div className='navbar-popup-preferences'>
-                            {renderAvatar}
-                            {renderLanguagePicker}
+                            {renderMobileAuthenticationMenu}
+                            <LanguagePicker />
                         </div>
+                    </div>
+
+                    <div ref={desktopPopupRef} style={desktopPopupVisibility ? { display: "initial" } : {}} className='navbar-desktopMenu-popup' tabIndex={-1}>
+                        {renderUserInfo}
                     </div>
                 </div>
             </div>

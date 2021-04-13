@@ -2,11 +2,10 @@ import { ReactElement } from "react";
 export interface StateKeys {
     currentPage: string;
     user: {
-        name: string,
-        email: string,
-        password: string
-    },
-    isLoggedIn: boolean;
+        name: string;
+        email: string;
+        password: string;
+    } | null;
     isModalVisible: boolean;
 }
 
@@ -19,7 +18,7 @@ export interface ProviderProps {
     children: ReactElement;
 }
 
-export type ReducerAction = "SET_CURRENT_PAGE" | "SET_LOCALIZATION_PREFERENCE" | "SET_MODAL_VISIBILITY";
+export type ReducerAction = "SET_CURRENT_PAGE" | "SET_USER_DATA" | "SET_MODAL_VISIBILITY";
 
 export interface DispatchParameters {
     type: ReducerAction;

@@ -4,12 +4,7 @@ import { ContextProps, ProviderProps, StateKeys } from "../types";
 
 const initialState: StateKeys = {
     currentPage: "",
-    user: {
-        name: "",
-        email: "",
-        password: ""
-    },
-    isLoggedIn: false,
+    user: null,
     isModalVisible: false
 };
 
@@ -24,8 +19,21 @@ const reducer = (state, action) => {
             state.currentPage = action.payload;
             break;
         case "SET_MODAL_VISIBILITY":
-            console.log(action.payload)
             state.isModalVisible = action.payload;
+            break;
+        case "SET_USER_DATA":
+            if (!action.payload) {
+                state.user = null;
+                break;
+            }
+
+            if (!state.user) {
+                state.user = {};
+            }
+
+            action.payload?.map(pair => {
+                state.user[pair.key] = pair.value;
+            });
             break;
     }
     return Object.assign({}, state);

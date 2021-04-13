@@ -4,7 +4,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,7 +20,8 @@
     height: 3em;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .modal-header span {
@@ -28,20 +29,21 @@
     margin-left: 1em;
 }
 
+.modal-closeButton {
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+.modal-controllers {
+    display: flex;
+}
+
+.modal-controllers select {
+    margin-right: 1em;
+}
+
 .modal-body {
     min-height: 100px;
-}
-
-.modal-footer {
-    height: 3em;
-    display: flex;
-    align-items: center;
-    border-top: 1px solid rgba(0, 0, 0, .2);
-    justify-content: flex-end;
-}
-
-.modal-footer button {
-    margin-right: 1em;
 }
 
 @media screen and (max-width: 1250px) {

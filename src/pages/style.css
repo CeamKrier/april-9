@@ -1,5 +1,5 @@
 .page-wrapper {
-    height: 100vh;
+    height: calc(86vh);
     background-color: cadetblue;
 }
 
