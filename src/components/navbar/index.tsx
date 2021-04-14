@@ -39,8 +39,10 @@ const Navbar = () => {
             return;
         }
 
-        const listener = desktopPopupRef.current.addEventListener("blur", () => {
-            setDesktopPopupVisibility(false);
+        const listener = desktopPopupRef.current.addEventListener("blur", event => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+                setDesktopPopupVisibility(false);
+            }
         });
         return () => {
             desktopPopupRef.current.removeEventListener("blur", listener);
@@ -55,6 +57,7 @@ const Navbar = () => {
     }, [dispatch]);
 
     const handleLogout = useCallback(() => {
+        console.log("hey");
         dispatch({
             type: "SET_USER_DATA",
             payload: null
@@ -85,8 +88,8 @@ const Navbar = () => {
     };
 
     const renderAuthenticationMenu = useMemo(() => {
-        return state.user ? <div className='navbar-avatar' onClick={handleUserDetailDisplay} /> : <button onClick={handleLogin}>Login</button>;
-    }, [state.user, handleLogin, handleUserDetailDisplay]);
+        return state.user ? <div className='navbar-avatar' onClick={handleUserDetailDisplay} /> : <button onClick={handleLogin}>{t("components.navbar.login")}</button>;
+    }, [state.user, handleLogin, handleUserDetailDisplay, t]);
 
     const renderUserInfo = useMemo(() => {
         return (
@@ -94,15 +97,15 @@ const Navbar = () => {
                 <div className='navbar-userInfo'>
                     <span title={state.user.name.length > TEXT_LENGTH_LIMIT ? state.user.name : undefined}>{normalizeText(state.user.name)}</span>
                     <span title={state.user.email.length > TEXT_LENGTH_LIMIT ? state.user.email : undefined}>{normalizeText(state.user.email)}</span>
-                    <button onClick={handleLogout}>Logout</button>
+                    <button onClick={handleLogout}>{t("components.navbar.logout")}</button>
                 </div>
             )
         );
-    }, [state.user, normalizeText, TEXT_LENGTH_LIMIT, handleLogout]);
+    }, [state.user, normalizeText, TEXT_LENGTH_LIMIT, handleLogout, t]);
 
     const renderMobileAuthenticationMenu = useMemo(() => {
-        return state.user ? renderUserInfo : <button onClick={handleLogin}>Login</button>;
-    }, [renderUserInfo, state.user, handleLogin, handleLogout]);
+        return state.user ? renderUserInfo : <button onClick={handleLogin}>{t("components.navbar.login")}</button>;
+    }, [renderUserInfo, state.user, handleLogin, handleLogout, t]);
 
     return (
         <div className='navbar-wrapper'>

@@ -8,6 +8,8 @@ import Navbar from "./components/navbar";
 import Modal from "./components/modal";
 import Footer from "./components/footer";
 
+import './global.css';
+
 const Application: React.FC<{}> = () => {
     return (
         <>

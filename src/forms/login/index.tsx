@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { useProvider } from "../../helpers/contextHelper";
 
@@ -6,6 +7,7 @@ import "../form.css";
 
 const Login: React.FC<{}> = () => {
     const { dispatch } = useProvider();
+    const { t } = useTranslation();
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -26,19 +28,19 @@ const Login: React.FC<{}> = () => {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Name:
+                {t("forms.login.name")}:
                 <input type='text' formTarget='name' required />
             </label>
             <label>
-                Email:
+                {t("forms.login.email")}:
                 <input type='email' formTarget='email' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' required />
             </label>
             <label>
-                Password:
+                {t("forms.login.password")}:
                 <input type='password' formTarget='password' required />
             </label>
             <div className='form-submitWrapper'>
-                <button type='submit'>Submit</button>
+                <button type='submit'>{t("forms.login.submit")}</button>
             </div>
         </form>
     );

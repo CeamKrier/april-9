@@ -1,10 +1,13 @@
 {
     "pages": {
         "home": {
-            "description": "Home page description"
+            "description": "This is a basic web application that utilize React framework to have a SPA. The name originated from the date I started to develop the project (i know, not that creative c:)",
+            "header": "Welcome to April-9"
         },
         "contact": {
-            "title": "Contact"
+            "title": "Contact",
+            "header": "Contact Us",
+            "description": "Fill the form below and we will be in touch as soon as possible"
         }
     },
     "components": {
@@ -15,11 +18,38 @@
             "links": {
                 "home": "Home",
                 "contact": "Contact"
-            }
+            },
+            "login": "Login",
+            "logout": "Logout"
         },
         "modal": {
             "title": "Login to your account",
             "closeButton": "Close"
+        }
+    },
+    "forms": {
+        "contact": {
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone Number",
+            "country": "Country",
+            "countries": {
+                "tr": "Turkey",
+                "us": "United States of America",
+                "uk": "United Kingdom",
+                "de": "Germany",
+                "ke": "Kenya",
+                "br": "Brazil",
+                "zw": "Zimbabwe"
+            },
+            "message": "Message",
+            "submit": "Send"
+        },
+        "login": {
+            "name": "Name",
+            "email": "Email",
+            "password": "Password",
+            "submit": "Login"
         }
     }
 }

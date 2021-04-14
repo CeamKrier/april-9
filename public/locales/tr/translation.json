@@ -1,10 +1,13 @@
 {
     "pages": {
         "home": {
-            "description": "Anasayfa açıklama yazısı"
+            "description": "Bu web uygulaması React framework`u kullanarak basit bir SPA oluşturmak amacıyla geliştirildi. Uygulamanın adı, onu geliştirmeye başladığım tarihten ortaya çıktı (farkındayım, pek yaratıcı değil c:)",
+            "header": "April-9`a Hoşgeldiniz"
         },
         "contact": {
-            "title": "İletişim"
+            "title": "İletişim",
+            "header": "Bize Yazın",
+            "description": "İletişim formunu doldurun, size en kısa zaman içerisinde dönüş sağlayacağız"
         }
     },
     "components": {
@@ -15,11 +18,38 @@
             "links": {
                 "home": "Anasayfa",
                 "contact": "İletişim"
-            }
+            },
+            "login": "Giriş Yap",
+            "logout": "Çıkış Yap"
         },
         "modal": {
             "title": "Hesabınıza giriş yapın",
             "closeButton": "Çıkış"
+        }
+    },
+    "forms": {
+        "contact": {
+            "name": "İsim",
+            "email": "Mail Adresi",
+            "phone": "Telefon Numarası",
+            "country": "Ülke",
+            "countries": {
+                "tr": "Türkiye",
+                "us": "Amerika Birleşik Devletleri",
+                "uk": "Birleşik Krallık",
+                "de": "Almanya",
+                "ke": "Kenya",
+                "br": "Brezilya",
+                "zw": "Zimbabve"
+            },
+            "message": "Mesajınız",
+            "submit": "Gönder"
+        },
+        "login": {
+            "name": "İsim",
+            "email": "Mail Adresi",
+            "password": "Şifre",
+            "submit": "Giriş Yap"
         }
     }
 }

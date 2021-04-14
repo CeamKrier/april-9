@@ -9,6 +9,7 @@ const Home: React.FC<{}> = () => {
     return (
         <div className='page-wrapper'>
             <div className='page-content'>
+                <h3>{t("pages.home.header")}</h3>
                 <span>{t("pages.home.description")}</span>
             </div>
         </div>

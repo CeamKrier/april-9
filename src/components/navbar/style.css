@@ -1,5 +1,6 @@
 .navbar-wrapper {
     height: 8vh;
+    background: #f5f3f4;
 }
 
 .navbar-content {
@@ -21,7 +22,7 @@
 
 .navbar-leftContent img {
     height: 2.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0.5em;
     margin-right: 0.5em;
 }
 

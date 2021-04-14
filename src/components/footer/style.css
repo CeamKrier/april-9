@@ -1,11 +1,14 @@
 .footer-wrapper {
     display: flex;
-    height: 4vh;
+    height: 6vh;
     justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 0;
     left: 0;
+    background: #264653;
     right: 0;
+    color: white;
 }
 
 .footer-content {
