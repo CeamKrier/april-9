@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from "react"
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GrMenu, GrClose } from "react-icons/gr";
+import { AiOutlineUser } from 'react-icons/ai';
 
 import LanguagePicker from "../picker";
 import { useProvider } from "../../helpers/contextHelper";
@@ -88,7 +89,13 @@ const Navbar = () => {
     };
 
     const renderAuthenticationMenu = useMemo(() => {
-        return state.user ? <div className='navbar-avatar' onClick={handleUserDetailDisplay} /> : <button onClick={handleLogin}>{t("components.navbar.login")}</button>;
+        return state.user ? (
+            <div className='navbar-avatar' onClick={handleUserDetailDisplay}>
+                <AiOutlineUser className="navbar-avatar-icon" size="1.5em" />
+            </div>
+        ) : (
+            <button onClick={handleLogin}>{t("components.navbar.login")}</button>
+        );
     }, [state.user, handleLogin, handleUserDetailDisplay, t]);
 
     const renderUserInfo = useMemo(() => {

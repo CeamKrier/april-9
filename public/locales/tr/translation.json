@@ -43,7 +43,11 @@
                 "zw": "Zimbabve"
             },
             "message": "Mesajınız",
-            "submit": "Gönder"
+            "submit": "Gönder",
+            "operationResults": {
+                "success": "Mesajınız gönderildi",
+                "error": "Bir şeyler ters gitti ve mesajınız gönderilemedi. Lütfen bizi aramayı düşünün"
+            }
         },
         "login": {
             "name": "İsim",

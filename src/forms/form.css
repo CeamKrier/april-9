@@ -12,7 +12,8 @@ label {
     justify-content: space-between;
 }
 
-input, textarea {
+input,
+textarea {
     width: 75%;
 }
 
@@ -30,12 +31,27 @@ button[type="submit"] {
     justify-content: center;
 }
 
-@media screen and (max-width: 1250px ){
+.form-flash-message {
+    justify-content: center;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+.flash-message-success {
+    background: #82ffba;
+}
+
+.flash-message-error {
+    background: #ff8282;
+}
+
+@media screen and (max-width: 1250px) {
     label {
         flex-direction: column;
     }
 
-    input, textarea {
+    input,
+    textarea {
         width: 100%;
     }
 }

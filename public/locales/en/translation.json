@@ -43,7 +43,11 @@
                 "zw": "Zimbabwe"
             },
             "message": "Message",
-            "submit": "Send"
+            "submit": "Send",
+            "operationResults": {
+                "success": "Your message has sent",
+                "error": "Something went wrong while trying to send your message. Please give us a call"
+            }
         },
         "login": {
             "name": "Name",
