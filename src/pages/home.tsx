@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import './style.css';
+import "./style.css";
 
 const Home: React.FC<{}> = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+
+    useEffect(() => {
+        document.title = `${t("components.navbar.links.home")} - April-9`;
+    }, [i18n.language]);
 
     return (
         <div className='page-wrapper'>
